@@ -12,10 +12,15 @@ primary_region = 'bos'
 [http_service]
   internal_port = 8000
   force_https = true
-  auto_stop_machines = 'stop'
+  auto_stop_machines = false
   auto_start_machines = true
   max_machines_count = 1
   processes = ['app']
+  
+  [http_service.concurrency]
+    type = "connections"
+    hard_limit = 0
+    soft_limit = 0
 
 [[vm]]
   memory = '16gb'
